@@ -1,0 +1,257 @@
+Enhanced Dual Reversible Data Hiding Using Combined Approaches
+Appl. Sci. 2025, 15(6), 3279; https://doi.org/10.3390/app15063279
+by Cheonshik Kim 1,*,Ching-Nung Yang 2ORCID andLu Leng 3,*ORCID
+Reviewer 1: Anonymous
+Reviewer 2: Anonymous
+Reviewer 3: Anonymous
+Appl. Sci. 2025, 15(6), 3279; https://doi.org/10.3390/app15063279
+Submission received: 26 January 2025 / Revised: 3 March 2025 / Accepted: 12 March 2025 / Published: 17 March 2025
+(This article belongs to the Special Issue Multimedia Smart Security)
+Round 1
+
+Reviewer 1 Report
+
+Comments and Suggestions for Authors
+please see the attached pdf file
+
+Comments for author File:  Comments.pdf
+
+Author Response
+
+Response to Reviewer1
+
+We would like to thank the reviewers for their valuable feedback and comments on our manuscript. We have carefully considered each point raised and have made the necessary revisions to address the concerns. Below, we provide detailed responses to each of the reviewers' comments.
+
+In the Introduction, I recommend specifying whether your proposed approach can be applied only to pictures or also to other data types (maybe after a small modification of your approach), such as audio data, data measured by sensors, etc.
+Response:
+
+In this study, we focus on a data hiding technique for bitmap (pixel-based) images, aiming to achieve a high embedding rate while preserving the visual quality of the image. The proposed method utilizes pixel-value-based modification techniques, making it difficult to apply directly to geometrically represented data such as vector graphics (e.g., SVG, AI). Furthermore, the proposed approach is designed for two-dimensional (2D) image data and is not directly applicable to one-dimensional (1D) data, such as audio or sensor data. However, with certain modifications, it may be possible to extend the method to audio data by applying a sample-block-based approach or to sensor data by utilizing specific frequency bands. These potential extensions will be considered in future research.
+
+Also, I recommend specifying whether your proposed approach can work with a vector graphic. Or is only a bitmap graphic usable?
+Response: This study focuses on a data hiding technique for bitmap (pixel-based) images, aiming to achieve a high embedding rate while preserving visual quality. Since the proposed method modifies pixel values directly, it is not suitable for application to vector graphics (e.g., SVG, AI), which use geometric representations instead of discrete pixel values. Therefore, this method is optimized for raster images such as PNG, BMP, and JPEG. However, vector graphics can be converted to bitmap format, in which case the proposed technique can be applied after the conversion process. The impact of such a conversion on data hiding performance could be explored in future research.
+
+ 
+
+Line 218 – I recommend explaining why only grayscale pictures are used. Can't you also use colored pictures? If colored pictures have to be converted to the grayscale version, does it not cause a loss of potentially important information?
+Response: In this study, grayscale images were used for evaluation to focus on the core performance of the proposed data hiding method. Since grayscale images contain only a single intensity channel, they simplify the embedding process and allow for more precise analysis of embedding capacity, visual distortion, and robustness. This approach also ensures consistency with prior studies that use grayscale images for similar evaluations. While our method is currently optimized for grayscale images, it can be extended to color images by applying the embedding process to individual RGB channels. However, such an extension requires further analysis to balance embedding capacity and visual quality across different channels, which will be considered in future research.
+
+I recommend specifying the minimum acceptable values of SSIM, ER, and RS.
+Response: In this study, SSIM, ER, and RS values were measured to evaluate the performance of data hiding. For SSIM, it is generally considered that values above 0.98 indicate that differences are nearly imperceptible to the human eye. In our study, we achieved an excellent average SSIM value of 0.999 or higher. Therefore, setting the minimum acceptable SSIM threshold at 0.98 or higher is appropriate.
+
+Additionally, an embedding rate (ER) of 1.0 bpp or higher is typically regarded as a high-capacity data hiding technique. In our study, we achieved a high ER value of 1.5 bpp. Hence, the minimum acceptable ER threshold in this study is set at 1.0 bpp or higher.
+
+Finally, RS analysis can be used to detect traces of data hiding. Previous studies have evaluated RS values within the 0.3 to 0.4 range as a safe level. In our study, the average RS value remained within 0.32 to 0.38, and thus, setting the minimum acceptable threshold at 0.35 or lower is considered appropriate.
+
+Table 1 – the SSIM of Baboon is equal to 1. This is the only picture when SSIM = 1. I recommend explaining why only this picture has SSIM = 1. Does this picture have any specific features?
+Response: The reason why the SSIM value for the Baboon image in Table 1 appears as 1.0 is due to its high-frequency components and complex texture characteristics. SSIM measures structural similarity, and in images with intricate textures, minor pixel value changes have little impact on the overall structure, making the SSIM value approach 1.0.
+
+The Baboon image contains fine patterns and strong variations compared to other test images (e.g., Peppers, Goldhill). As a result, structural changes may have been less detectable even after data embedding. In contrast, images with simpler backgrounds are more likely to show noticeable differences with minor pixel modifications.
+
+Therefore, it is more accurate to analyze SSIM in conjunction with PSNR rather than relying solely on SSIM. In this study, we considered this factor when evaluating the performance of the proposed method.
+
+Table 2. - as the PSNR of every method is significantly over 30 dB, which is a value considered to be nearly imperceptible to the human eye, does it make any sense to optimize this parameter? I recommend explaining why optimizing this parameter is still important.
+Response: Although a PSNR above 30 dB is generally considered to be visually imperceptible, optimizing PSNR remains an essential aspect of data hiding research. A higher PSNR is particularly critical in applications requiring high-fidelity image quality, such as medical imaging, forensic analysis, and security-sensitive environments. Additionally, recent advancements in AI-based steganalysis suggest that higher PSNR values can reduce the likelihood of detection, making data hiding techniques more robust against automated detection systems.
+
+Furthermore, increasing PSNR while maintaining a high embedding rate (ER) presents a technical challenge, and our method demonstrates that high-quality data hiding can be achieved without compromising capacity. Therefore, PSNR optimization in this study is not merely aimed at surpassing 30 dB but rather at maximizing the applicability of the proposed method across different domains while enhancing its resistance to detection.
+
+In the experimental part, I recommend analyzing whether your approach is also effective for pictures of various resolutions. For example: X-ray = 5 Mpx, smartphone photos = 50 Mpx, pathological images = 100 Mpx, satellite image = 1000 Mpx. I recommend conducting another experiment where you will analyze the performance of your approach when pictures of higher resolutions are processed.
+Response: Thank you for your insightful suggestion. The proposed method is designed to be independent of image resolution, as it operates on block-wise processing rather than on the entire image at once. Therefore, it can be applied to high-resolution images (e.g., 5 MP X-ray scans, 50 MP smartphone images, 100 MP pathological images, and 1000 MP satellite images) in the same manner as with standard images.
+
+However, high-resolution images often require specific considerations such as compression effects (e.g., JPEG artifacts), storage constraints, and computational efficiency. While this study focuses on evaluating the method using standard image datasets, future research will explore the practical performance of the approach on high-resolution images in various application domains.
+
+Several formal drawbacks detected. Below, I list some of them: - once an acronym is defined, use only this acronym instead of the full name, for
+Response: We appreciate the reviewer's comment. We have revised the manuscript to ensure consistent terminology throughout the paper. Specifically, we have standardized the terms ``Hamming Coding," ``Arithmetic Coding," and ``bpp" and removed redundant definitions of PSNR and SSIM to improve clarity.
+
+Conclusion
+
+We have revised the manuscript according to the reviewers' suggestions. We believe that the changes have significantly improved the quality of our paper. We hope that our revisions address all the concerns and that the manuscript is now suitable for publication.
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Author Response File:  Author Response.pdf
+
+Reviewer 2 Report
+
+Comments and Suggestions for Authors
+It is a well written paper with thorough representation of the methods and the results. The only question I have is whether this reversible data hiding technique would stand up to a man-in-the-middle attack where the attacker has gained the two cover images. I recommend acceptance with the authors addressing that one issue.
+
+Author Response
+
+Response to Reviewer2
+
+We would like to thank the reviewers for their valuable feedback and comments on our manuscript. We have carefully considered each point raised and have made the necessary revisions to address the concerns. Below, we provide detailed responses to each of the reviewers' comments.
+
+Question: It is a well written paper with thorough representation of the methods and the results. The only question I have is whether this reversible data hiding technique would stand up to a man-in-the-middle attack where the attacker has gained the two cover images. I recommend acceptance with the authors addressing that one issue.
+
+Response:
+
+Thank you for your positive evaluation of our paper and your insightful question regarding the resilience of our reversible data hiding (RDH) technique against a man-in-the-middle (MITM) attack.
+
+While existing RDH research rarely considers explicit countermeasures against MITM attacks, we recognize that in practical scenarios, an attacker gaining access to both cover images could pose security risks. In response to your comment, we have added a brief discussion in Section 5 of the revised manuscript, highlighting the potential challenges of MITM attacks and possible future directions, such as integrating cryptographic techniques with RDH methods.
+
+We sincerely appreciate your constructive feedback and are pleased with your recommendation for acceptance.
+
+ 
+
+ 
+
+Reviewer 3 Report
+
+Comments and Suggestions for Authors
+The following aspects must be improved:
+
+-it is not clear what are the improvements of the proposed method -  section 3 must highlight all these aspects in correlation with other existing methods 
+
+-how were selected the 9 test images? What are the criteria based on which these are selected? Are these relevant for testing the method? Please explain.
+
+-the obtained result can be generalised by testing only on the 9 images from the paper? How do you explain this? How the results can be provided only on this set of images?
+
+-why tables 3 and 4 contain fewer images than the 9  test images used before?
+
+-please detail how were selected methods used for comparison in table 2? All these methods are relatively old - are there any other newer methods?
+
+-add newer references (from last 5 years) that are significant for this work.
+
+Author Response
+
+Response to Reviewer2
+
+We would like to thank the reviewers for their valuable feedback and comments on our manuscript. We have carefully considered each point raised and have made the necessary revisions to address the concerns. Below, we provide detailed responses to each of the reviewers' comments.
+
+it is not clear what are the improvements of the proposed method - section 3 must highlight all these aspects in correlation with other existing methods
+Response:
+
+In this study, we analyzed various data hiding techniques proposed in previous research and introduced a new method that improves upon them by combining Hamming coding, Arithmetic coding, and an enhanced EMD (Exploiting Modification Direction) technique. Traditional methods typically use LSB (Least Significant Bit) embedding or conventional EMD techniques, which often suffer from limited embedding capacity and difficulties in maintaining high image quality.
+
+Our proposed method enhances data recovery accuracy through Hamming coding and improves compression efficiency using Arithmetic coding, allowing for higher data embedding while achieving superior PSNR and SSIM values. While previous studies reported an average PSNR of 45–55 dB, our approach achieves 66–68 dB, minimizing visual quality degradation. Additionally, previous research often limited the embedding rate (ER) to 1.0 bpp or lower, whereas our method allows for up to 1.5 bpp, maximizing embedding efficiency.
+
+Furthermore, many existing methods do not consider error correction, whereas our approach incorporates Hamming coding to enhance data stability and robustness. Additionally, previous techniques often involve high computational complexity, making large-scale data processing inefficient, while our method optimizes encoding and decoding operations using Arithmetic coding, thereby improving computational efficiency.
+
+In summary, the proposed method demonstrates significant improvements over previous studies in terms of higher embedding capacity (ER), enhanced image quality (PSNR and SSIM), increased data stability (error correction), and improved computational efficiency (optimized coding operations).
+
+-how were selected the 9 test images? What are the criteria based on which these are selected? Are these relevant for testing the method? Please explain.
+Response:
+
+The selected nine images were chosen to reflect diverse texture and frequency characteristics. For example, Baboon, Lena, and Barbara contain rich high-frequency components and complex textures, while Peppers, Goldhill, and Airplane include relatively smooth regions and well-defined edges.
+
+Additionally, the images were selected from the USC-SIPI (University of Southern California - Signal and Image Processing Institute) standard dataset, which is widely used as a benchmark in steganography and image processing research. This ensures that the proposed data hiding method is not limited to specific types of images but performs consistently across various texture patterns.
+
+-the obtained result can be generalised by testing only on the 9 images from the paper? How do you explain this? How the results can be provided only on this set of images?
+Response:
+
+The nine test images used in this study were selected from the USC-SIPI standard dataset, which is a widely used benchmark in steganography and image processing research. This dataset includes a variety of textures and structural characteristics, ensuring that the experimental results of this study are not limited to specific types of images.
+
+Additionally, the proposed method operates on a block-wise basis, allowing it to be applied independently of image size or resolution. Therefore, the method is expected to perform consistently not only on the nine selected images but also on higher-resolution images, such as 5 MP medical images, 50 MP smartphone photos, 100 MP pathological images, and 1000 MP satellite images.
+
+However, to further validate the generalizability of the method, future research will include additional experiments on images with various resolutions and from different domains.
+
+-why tables 3 and 4 contain fewer images than the 9 test images used before?
+Response:
+
+Table 3 and Table 4 summarize the results under specific experimental conditions. Instead of including all nine test images, representative images were selected to effectively illustrate the key trends observed in the experiments. The selection includes images with different texture characteristics to ensure a balanced evaluation. However, all nine images were tested, and the complete results remain consistent with the trends presented in these tables.
+
+Please detail how were selected methods used for comparison in table 2? All these methods are relatively old - are there any other newer methods?
+Response:
+
+We appreciate the reviewer’s suggestion to expand the comparison by including recent studies. To ensure a fair evaluation, we have selected only Dual-Image RDH methods for comparison in Table ???
+, as the proposed approach is based on this technique. The studies were chosen according to the following criteria:
+
+Only Dual-Image RDH methods were included to avoid unfair comparisons with Single-Image RDH techniques.
+Well-cited and representative studies were selected to highlight key distinctions between existing approaches and our method.
+Following the reviewer’s suggestion, we have incorporated recent works, including Lu et al.\cite{Lu}, Lee et al.\cite{Lee}, and Zhang et al.\cite{Zhang}, into our analysis.
+
+Table ???
+ presents the PSNR values of nine test images for each shadow generated using the comparative methods when embedding 5,000, 10,000, and 20,000 bits of data. The results demonstrate that the proposed scheme achieves superior PSNR in most shadow images compared to other methods.
+
+Among the existing approaches, Liu et al.\cite{Liu} and Zhang et al.\cite{Meng} achieved the highest PSNR values, apart from our proposed method. Zhang et al.'s\cite{Meng} approach improves data hiding efficiency by embedding and extracting data using a vector coordinate transformation (TOC) approach without requiring a codebook. This method minimizes unnecessary additional data storage and reduces distortions, leading to higher PSNR values. As a result, it effectively balances high embedding capacity and image quality preservation.
+
+On the other hand, the methods proposed by Lu et al.\cite{Lu} and Lee et al.\cite{Lee} achieved maximum PSNR values of 61.25dB and 65.33dB, respectively, which are relatively lower than those of the methods compared in Table 2.
+
+Add newer references (from last 5 years) that are significant for this work.
+Response:
+
+We have updated the references to include recent studies published within the last five years. The newly added references cover various aspects of Dual-Image Reversible Data Hiding (DIRDH), including numeral system encoding, pixel value parity, vector coordinate transformation, and a comprehensive survey of DIRDH techniques. These additions ensure that the manuscript reflects the latest advancements in the field.
+
+C. Lu, T. Nhan Vo and B. Jana, "Dual-image reversible data hiding based on encoding the numeral system of concealed information," 2023 15th International Conference on Advanced Computational Intelligence (ICACI), Seoul, Korea, Republic of, 2023, pp. 1-7
+Kumar, A. Gupta and G. S. Walia, "Dual Image Reversible Data Hiding: A Survey," 2023 Third International Conference on Secure Cyber Computing and Communication (ICSCCC), Jalandhar, India, 2023, pp. 190-195
+-F. Lee and K. -C. Chan, "A Novel Dual Image Reversible Data Hiding Scheme Based on Vector Coordinate With Triangular Order Coding," in IEEE Access, vol. 12, pp. 90794-90814, 2024.
+Zhang, H.; Peng, Z.; Meng, F. "Dual-image Reversible Data Hiding Based on Pixel Value Parity and Multiple Embedding Strategy," Signal Processing, 228(2025) 109764
+Author Response File:  Author Response.pdf
+
+Round 2
+
+Reviewer 1 Report
+
+Comments and Suggestions for Authors
+I am satisfied with this version. The paper can be accepted in my opinion.
+
+Author Response
+
+Thank you for giving a passing opinion on this paper.
+
+Reviewer 3 Report
+
+Comments and Suggestions for Authors
+Some of my comments were addressed. The evaluation part must be improved: since the tested images were selected from the USC-SIPI standard dataset a detailed justification must be done: a) why and how only these images were selected
+
+b) why the evaluation wasn't done on the whole dataset (since it is a benchmark).
+
+Author Response
+
+Response to Reviewer3
+
+We would like to thank the reviewers for their valuable feedback and comments on our manuscript. We have carefully considered each point raised and have made the necessary revisions to address the concerns. Below, we provide detailed responses to each of the reviewers' comments.
+
+Question: Some of my comments were addressed. The evaluation part must be improved: since the tested images were selected from the USC-SIPI standard dataset a detailed justification must be done: a) why and how only these images were selected: b) why the evaluation wasn't done on the whole dataset (since it is a benchmark).
+
+Response: Thank you for your valuable comments. We appreciate your feedback, which helps improve the clarity and rigor of our evaluation section.
+
+Regarding the selection of test images from the USC-SIPI standard dataset, we carefully chose a representative subset that encompasses a diverse range of image characteristics, including variations in texture, edge density, and frequency components. Specifically, we included images such as Baboon, Lena, Barbara, Peppers, and Goldhill, which are widely used in data hiding and steganography research due to their distinct features. High-frequency images like Baboon challenge the robustness of the data hiding method, while smooth-textured images like Peppers test the impact on perceptual quality. This ensures that our method is evaluated across different types of images.
+
+Regarding the decision not to evaluate the entire dataset, our primary goal was to provide a comprehensive yet computationally feasible analysis. The USC-SIPI dataset consists of numerous images, including synthetic and structured images that are not commonly used in data hiding research. Instead of evaluating all images, we focused on those that best reflect real-world application scenarios. Additionally, many prior studies in the field have also adopted a subset of benchmark images rather than the entire dataset, allowing for meaningful comparisons with existing methods.
+
+To address your concern, we have clarified the image selection criteria in the revised manuscript and have explicitly discussed the rationale behind our evaluation choices. This explanation is now included in Section 4 to enhance readability and ensure transparency in our methodology.
+
+We sincerely appreciate your constructive feedback and believe these refinements will enhance the completeness of our study.
+
+Round 3
+
+Reviewer 3 Report
+
+Comments and Suggestions for Authors
+Regarding image selection for testing: line 655 "The selection of test images was carefully made" please explain in detail how was made this "carefully selection" - please present a statistc about images from the dataset in order to prove your selection; how was evaluated "texture complexity and frequency components".
+
+Author Response
+
+Response to Reviewer3
+
+We would like to thank the reviewers for their valuable feedback and comments on our manuscript. We have carefully considered each point raised and have made the necessary revisions to address the concerns. Below, we provide detailed responses to each of the reviewers' comments.
+
+Question: Regarding image selection for testing: line 655 "The selection of test images was carefully made" please explain in detail how was made this "carefully selection" - please present a statistc about images from the dataset in order to prove your selection; how was evaluated "texture complexity and frequency components".
+
+Response: We sincerely appreciate the reviewer’s insightful comment regarding the image selection process. In our revised manuscript, we have clarified the rationale behind our selection of test images to ensure transparency in our experimental design.
+
+We selected images from the USC-SIPI dataset, a widely recognized benchmark in steganography and image processing research. The selection was made to encompass a broad range of texture complexity and frequency components. Specifically, high-frequency images such as Baboon, Lena, and Barbara were included to represent complex textures, while images like Peppers, Goldhill, and Airplane were chosen for their relatively smooth regions and well-defined edges. This selection ensures a diverse evaluation of the proposed method across different image characteristics, aligning with standard practices in reversible data hiding (RDH) research.
+
+While the reviewer suggested presenting a statistical analysis of image characteristics, we believe that such an analysis, while potentially useful, is not essential for the validation of our method. The USC-SIPI dataset already serves as a widely accepted benchmark, and the selected images have been commonly used in numerous RDH and steganography studies to assess algorithm performance. Therefore, additional dataset-specific statistical evaluations were deemed unnecessary.
+
+To address the reviewer’s concern, we have revised the Conclusion section to explicitly state the selection criteria and reinforce the representativeness of the chosen images. We believe this clarification sufficiently addresses the reviewer’s query while maintaining the scientific integrity of the study.
+
+Once again, we appreciate the reviewer’s valuable feedback, which has helped us improve the clarity of our paper.
+
+ 
+
+Round 4
+
+Reviewer 3 Report
+
+Comments and Suggestions for Authors
+Since all my comments were addressed, I recommend to publish the paper.
