@@ -1,0 +1,133 @@
+ Algorithm 1 Arithmetic encoding
+ Require: Data sequence D = {d1,d2,...,dn}, symbol probabilities P
+ Ensure: Encoded value E
+ 1: Initialize low ← 0
+ 2: Initialize high ← 1
+ 3: Initialize range ← high − low
+ 4: for each symbol di in D do
+ 5:range ← high−low
+ 6:high ← low+range×CDF(di)
+ 7:low ← low+range×CDF(di−1) 
+ 8: end for
+ 9: E ←(low+high)/2
+ 10: return E
+ Algorithm 2 Arithmetic decoding
+ Require: Encoded value E, symbol probabilities P, data length n
+ Ensure: Decoded sequence {D′ = d′1,d′2,...,d′ n}
+ 1: Initialize low ← 0
+ 2: Initialize high ← 1
+ 3: Initialize range ← high − low
+ 4: Initialize encoded_value ← E
+ 5: for i ← 1to n do
+ 6: range ← high−low
+ 7:value ← (encoded_value −low)/range
+ 8:Find the largest j such that CDF(dj) ≤ value
+ 9:d′=i ←dj
+ 10:high ← low+range×CDF(dj)
+ 11:low ← low+range×CDF(dj−1)
+ 12: end for
+ 13: return S′
+Algorithm3 Datahiding algorithm
+ Require: CoverimagesI1,I2,secretdatabitsm={b∈{0,1}n}
+ Ensure:MarkedimagesI′1,I′2
+ 1: Initialization:
+ 2: DivideI1andI2intonon-overlappingblocksofsize16×16
+ 3: foreachblockpair(B1i ,B2i )do
+ 4: Encoding:
+ 5:for each pixel pair (x1 k , x2k) do
+ 6:Extract upper bits to form codeword P
+ 7:Compute syndrome S ← H·PT
+ 8:S′ ← S⊕(mk,mk+1,mk+2)
+ 9:Store S′ in encoded message M
+ 10:end for
+ 11: Compression:
+ 12:Dcomp ← A(M)
+ 13:L ←len(Dcomp)
+ 14:Embedding (RDHEMD)method:
+ 15:for k = 1to L/2do
+ 16: Compute f ← (x1 k +x2 k ·2) mod 5
+ 17:ddecimal(k) = D2r
+ 18:comp · 21 + D2r+1
+ 19: Compute pos = (ddecimal(k) − f) mod 5
+ 20: if pos < 0 then
+ 21:pos ← 5−abs(pos)
+ 22:end if
+ 23: if pos == 1then 
+ 24:x1 k ← x1k +1
+ 25:else if pos == 2 then
+ 26: x2k ← x2k +1
+ 27: else if pos == 3 then
+ 28:x1k ← x1k −1
+ 29:x2k ← x2k +2
+ 30:else if pos == 4 then
+ 31: x1k ← x1k +1
+ 32: x2k ← x2k −1
+ 33: end if
+    end for
+ 34:Store length L in pixels {x250,x251,..., x256} of B1i
+ 35: end for
+ 36: Finalization:
+ 37: Replace original blocks in I1, I2 with modified blocks B1i ,B2i
+ 38: return Marked images I′1, I′2
+
+Algorithm 4 Data extraction and image recovery algorithm
+ Require: Marked images I′1, I′2
+ Ensure: Recovered original image O and hidden data m
+ 1: Divide I′1 and I′
+ 2 into non-overlapping blocks of size 16 × 16
+ 2: for each block pair (B1i , B2i ) do
+ 3: Read pixel pairs {x11, x12,. . ., x1 256} and {x21, x22, . . . , x2 256}
+ 4:Read binary values from pixel positions (x250,...,x256) and convert to decimal length L
+ 5:for k = 1to L/2do
+ 6:Compute f ← (x1k +x2k ·2) mod 5
+ 7:fbinary =2 ·2 +(f mod2)
+ 8:Assign M(k) ← fbinary
+ 9:end for
+ 10:for j = 1to L/2do
+ 11: Recover pixel value pj ← x1 j× x2j
+ 12: Replace corresponding pixels in blocks B1
+ 13:
+ 14:
+
+ 
+ 
+ f
+ 
+ 
+ 
+ 
+ 
+
+
+ i , B2
+ i
+ ▷ Extract data using RDH EMD
+ 2
+ ▷ Restore original pixel xj
+ end for
+ Combine blocks to form images I1, I2
+ 15: end for
+ 16: Decompress extracted data using arithmetic decoding: Mdecompressed ← AD(M)
+ 17: for each pixel pair (x1
+ j , x2
+ j ) do
+ 18:
+ 19:
+ 20:
+ 21:
+ Construct codeword Pj = {b1
+ j,7,b1
+ j,6,b1
+ j,5, b1
+ j,4, b2
+ j,7, b2
+ j,6, b2
+ j,5}
+ Convert Mj:j+2 to decimal l ← b2d(Mj:j+2
+ decompressed)
+ Flip bit at position l in Pj
+ Extract hidden bits mk:k+2 ← H(Pj ⊕el)
+ 22: end for
+ 23: Combine all blocks to restore the original cover image O
+ 24: return O,m
+ 
